@@ -1,0 +1,246 @@
+Q	Ile zasad azotowych występuje w DNA?
+A	2
+B	3
+C	4
+D	5
+S	C
+Q	Która zasada azotowa występuje w DNA, ale nie w RNA?
+A	Adenina
+B	Tymina
+C	Cytozyna
+D	Guanina
+S	B
+Q	Jaka zasada w DNA jest komplementarna do adeniny?
+A	Guanina
+B	Cytozyna
+C	Uracyl
+D	Tymina
+S	D
+Q	Jaka zasada w DNA jest komplementarna do cytozyny?
+A	Guanina
+B	Adenina
+C	Tymina
+D	Uracyl
+S	A
+Q	Który z poniższych kwasów nukleinowych zawiera uracyl?
+A	DNA
+B	RNA
+C	Zarówno DNA, jak i RNA
+D	Żaden z nich
+S	B
+Q	Jednostką informacji dziedzicznej jest:
+A	Gen
+B	Białko
+C	Lipid
+D	Rybosom
+S	A
+Q	Gdzie w komórce eukariotycznej znajduje się większość DNA?
+A	W błonie komórkowej
+B	W jądrze komórkowym
+C	W aparacie Golgiego
+D	W lizosomie
+S	B
+Q	Jak nazywa się proces przepisywania informacji z DNA na RNA?
+A	Translacja
+B	Replikacja
+C	Transkrypcja
+D	Mutacja
+S	C
+Q	Jak nazywa się proces syntezy białka na podstawie informacji zawartej w mRNA?
+A	Translacja
+B	Transkrypcja
+C	Replikacja
+D	Duplikacja
+S	A
+Q	Ile nukleotydów tworzy kodon?
+A	1
+B	2
+C	3
+D	4
+S	C
+Q	Która cząsteczka przenosi informację z DNA do rybosomu?
+A	mRNA
+B	tRNA
+C	Lipid
+D	ATP
+S	A
+Q	Jak nazywa się pełny zestaw materiału genetycznego organizmu?
+A	Proteom
+B	Genom
+C	Chromatyna
+D	Kodon
+S	B
+Q	Mutacja to:
+A	Zmiana w materiale genetycznym
+B	Podział komórki
+C	Synteza białka
+D	Transport RNA
+S	A
+Q	Która z poniższych sekwencji może być fragmentem DNA?
+A	ACGTACGT
+B	ACGUACGU
+C	ABCDEFGH
+D	12345678
+S	A
+Q	Jaka jest sekwencja komplementarna do ACGT?
+A	ACGT
+B	TGCA
+C	GCAT
+D	AAAA
+S	B
+Q	Jakiego symbolu używamy w Pythonie do przypisania wartości do zmiennej?
+A	==
+B	=
+C	!=
+D	<=
+S	B
+Q	Która funkcja Pythona służy do wyświetlania tekstu na ekranie?
+A	input()
+B	len()
+C	print()
+D	str()
+S	C
+Q	Która funkcja Pythona pozwala pobrać tekst wpisany przez użytkownika?
+A	print()
+B	input()
+C	read()
+D	write()
+S	B
+Q	Jaki będzie wynik wyrażenia 2 + 3 * 4 w Pythonie?
+A	20
+B	14
+C	24
+D	11
+S	B
+Q	Jaki będzie wynik wyrażenia 10 // 3 w Pythonie?
+A	3
+B	3.33
+C	4
+D	1
+S	A
+Q	Jaki będzie wynik wyrażenia 10 % 3 w Pythonie?
+A	0
+B	1
+C	2
+D	3
+S	B
+Q	Który typ danych w Pythonie służy do przechowywania tekstu?
+A	int
+B	float
+C	bool
+D	str
+S	D
+Q	Która z poniższych wartości jest typu bool w Pythonie?
+A	"True"
+B	1
+C	True
+D	"False"
+S	C
+Q	Jaką wartość zwróci len("ACGT")?
+A	3
+B	4
+C	5
+D	8
+S	B
+Q	Który operator w Pythonie sprawdza równość dwóch wartości?
+A	=
+B	==
+C	!=
+D	:=
+S	B
+Q	Co oznacza operator != w Pythonie?
+A	Przypisanie
+B	Większe lub równe
+C	Różne
+D	Równe
+S	C
+Q	Która instrukcja służy w Pythonie do wykonania kodu pod pewnym warunkiem?
+A	if
+B	for
+C	import
+D	def
+S	A
+Q	Która pętla jest naturalnym wyborem do przechodzenia po elementach listy?
+A	if
+B	for
+C	def
+D	import
+S	B
+Q	Jaki jest pierwszy indeks elementu listy w Pythonie?
+A	-1
+B	0
+C	1
+D	2
+S	B
+Q	Jaki będzie wynik wyrażenia "AC" + "GT" w Pythonie?
+A	AC GT
+B	AC+GT
+C	ACGT
+D	Błąd
+S	C
+Q	Jaki będzie wynik wyrażenia "A" * 3 w Pythonie?
+A	A3
+B	AAA
+C	3A
+D	Błąd
+S	B
+Q	Które wyrażenie tworzy w Pythonie pustą listę?
+A	{}
+B	()
+C	[]
+D	""
+S	C
+Q	Jaką wartość ma len([10, 20, 30])?
+A	2
+B	3
+C	30
+D	60
+S	B
+Q	Która metoda dodaje element na końcu listy w Pythonie?
+A	add()
+B	insert_end()
+C	push()
+D	append()
+S	D
+Q	Co robi funkcja int("42") w Pythonie?
+A	Zamienia liczbę 42 na tekst
+B	Zamienia tekst "42" na liczbę całkowitą
+C	Zwraca długość tekstu
+D	Wyświetla 42 na ekranie
+S	B
+Q	Wektor (3, 4) ma długość euklidesową równą:
+A	5
+B	7
+C	12
+D	25
+S	A
+Q	Ile elementów ma wektor (1, 2, 3, 4)?
+A	2
+B	3
+C	4
+D	10
+S	C
+Q	Jaki jest wynik iloczynu skalarnego wektorów (1, 0) i (0, 1)?
+A	0
+B	1
+C	2
+D	-1
+S	A
+Q	Macierz o 3 wierszach i 2 kolumnach ma ile elementów?
+A	5
+B	6
+C	8
+D	9
+S	B
+Q	Jeśli zbiór A ma 3 elementy, a zbiór B ma 4 elementy, to iloczyn kartezjański A × B ma:
+A	7 elementów
+B	12 elementów
+C	16 elementów
+D	1 element
+S	B
+Q	Jeśli algorytm wykonuje dokładnie trzy operacje dla każdego z n elementów danych, to liczba wykonanych operacji jest:
+A	Niezależna od n
+B	Proporcjonalna do n
+C	Proporcjonalna do n do trzeciej potęgi
+D	Zawsze równa 3
+S	B

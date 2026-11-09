@@ -1,0 +1,42 @@
+from typing import Literal
+from question import question_create
+
+Error = Literal["MISSING_QUESTION",
+                "MISSING_ANSWER", 
+                "TOO_MANY_ANSWERS",
+                "MISSING_CORRECT_ANSWER",
+                "INVALID_LINE_INDICATOR",
+                "INVALID_CORRECT_ANSWER"]
+
+indicators = ["Q", "A", "B", "C", "D", "S"]
+expected_indicator_idx = 0
+
+def parse_line(line: str) -> tuple[tuple[str, str], Error|None]:
+  global expected_indicator_idx
+  curr_expected_indicator = indicators[expected_indicator_idx]
+  expected_indicator_idx = (expected_indicator_idx + 1) % len(indicators)
+  indicator, content = line.split("\t")
+  if curr_expected_indicator == indicator:
+    if indicator == "S" and content not in ["A", "B", "C", "D"]: return (("", ""), "INVALID_CORRECT_ANSWER")
+    return ((indicator, content), None)
+  elif curr_expected_indicator == "Q": return (("", ""), "MISSING_QUESTION")
+  elif curr_expected_indicator in ["A", "B", "C", "D"]: return (("", ""), "MISSING_ANSWER")
+  elif curr_expected_indicator == "S": return (("", ""), "MISSING_CORRECT_ANSWER")
+  else: return (("", ""), "INVALID_LINE_INDICATOR")
+
+def load_questions(path: str) -> tuple[list, Error|None]:
+  with open(path) as f:
+    lines = f.readlines()
+  
+  questions = [] 
+  question_lines = []
+  for line in lines:
+    line = line.strip()
+    result, err = parse_line(line)
+    if err != None: return ([], err)
+    question_lines.append(result)
+    if len(question_lines) == 6:
+      questions.append(question_create(question_lines))
+      question_lines = []
+  return (questions, None)
+      

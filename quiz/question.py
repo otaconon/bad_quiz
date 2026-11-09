@@ -10,9 +10,8 @@ def question_create(lines: list[str]):
       
   def use_lifeline():
     nonlocal answers
-    new_answers = {"A": answers["A"]} if "A" != correct_answer else {"B": answers["B"]}
-    new_answers[correct_answer] = answers[correct_answer]
-    answers = new_answers
+    kept_wrong = "B" if correct_answer == "A" else "A"
+    answers = {k: v for k, v in answers.items() if k in (correct_answer, kept_wrong)}
       
   def get_question(): return question
   def get_answers(): return answers

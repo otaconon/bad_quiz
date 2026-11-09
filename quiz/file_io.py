@@ -1,21 +1,17 @@
 from question import question_create
 from pathlib import Path
 
-indicators = ["Q", "A", "B", "C", "D", "S"]
-expected_indicator_idx = 0
+INDICATORS = ["Q", "A", "B", "C", "D", "S"]
 
-def parse_line(line: str) -> tuple[tuple[str, str], str|None]:
-  global expected_indicator_idx
-  curr_expected_indicator = indicators[expected_indicator_idx]
-  expected_indicator_idx = (expected_indicator_idx + 1) % len(indicators)
+def parse_line(line: str, expected_indicator: str) -> tuple[tuple[str, str], str | None]:
   indicator, content = line.split("\t")
-  if curr_expected_indicator == indicator:
-    if indicator == "S" and content not in ["A", "B", "C", "D"]: return (("", ""), "INVALID_CORRECT_ANSWER")
-    return ((indicator, content), None)
-  elif curr_expected_indicator == "Q": return (("", ""), "MISSING_QUESTION")
-  elif curr_expected_indicator in ["A", "B", "C", "D"]: return (("", ""), "MISSING_ANSWER")
-  elif curr_expected_indicator == "S": return (("", ""), "MISSING_CORRECT_ANSWER")
-  else: return (("", ""), "INVALID_LINE_INDICATOR")
+  if indicator not in INDICATORS: return (("", ""), "INVALID_LINE_INDICATOR")
+  if indicator != expected_indicator:
+    if expected_indicator == "Q": return (("", ""), "MISSING_QUESTION")
+    if expected_indicator in ["A", "B", "C", "D"]: return (("", ""), "MISSING_ANSWER")
+    if expected_indicator == "S": return (("", ""), "MISSING_CORRECT_ANSWER")
+  if indicator == "S" and content not in ["A", "B", "C", "D"]: return (("", ""), "INVALID_CORRECT_ANSWER")
+  return ((indicator, content), None)
 
 def load_questions(path: Path) -> tuple[list, str|None]:
   with open(path) as f:
@@ -23,9 +19,10 @@ def load_questions(path: Path) -> tuple[list, str|None]:
   
   questions = [] 
   question_lines = []
-  for line in lines:
+  for i, line in enumerate(lines):
     line = line.strip()
-    result, err = parse_line(line)
+    expected_indicator = INDICATORS[i % len(INDICATORS)]
+    result, err = parse_line(line.strip(), expected_indicator)
     if err != None: return ([], err)
     question_lines.append(result)
     if len(question_lines) == 6:
@@ -35,10 +32,9 @@ def load_questions(path: Path) -> tuple[list, str|None]:
   return (questions, None)
 
 def load_scores(path: Path) -> list[tuple[str, int]]:
-  with open(path, "r") as f:
-    records = [line.strip().split("\t") for line in f.readlines()]
-    records = [(name, int(value)) for name, value in records]
-  return records
+  with open(path, "r+") as f: records = [line.rstrip("\r\n").split("\t") for line in f]
+  if any(not name or any(c.isspace() for c in name) for name, _ in records): raise ValueError("Invalid player name")
+  return [(name, int(value)) for name, value in records]
 
 def write_scores(path: Path, records: list[tuple[str, int]]):
   with open(path, "w") as f:

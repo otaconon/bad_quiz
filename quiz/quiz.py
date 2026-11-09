@@ -5,7 +5,7 @@ from game import game_create
 
 def play_quiz(questions_path: Path, scores_path: Path):
   try: questions, err = file_io.load_questions(questions_path)
-  except ValueError: print("ERROR: Questions file has incorrect format: ", scores_path); exit(1)
+  except ValueError: print("ERROR: Questions file has incorrect format: ", questions_path); exit(1)
   if err != None: print("ERROR: ", err); exit(1)
   
   try: records = file_io.load_scores(scores_path)

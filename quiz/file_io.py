@@ -1,17 +1,9 @@
-from typing import Literal
 from question import question_create
-
-Error = Literal["MISSING_QUESTION",
-                "MISSING_ANSWER", 
-                "TOO_MANY_ANSWERS",
-                "MISSING_CORRECT_ANSWER",
-                "INVALID_LINE_INDICATOR",
-                "INVALID_CORRECT_ANSWER"]
 
 indicators = ["Q", "A", "B", "C", "D", "S"]
 expected_indicator_idx = 0
 
-def parse_line(line: str) -> tuple[tuple[str, str], Error|None]:
+def parse_line(line: str) -> tuple[tuple[str, str], str|None]:
   global expected_indicator_idx
   curr_expected_indicator = indicators[expected_indicator_idx]
   expected_indicator_idx = (expected_indicator_idx + 1) % len(indicators)
@@ -24,7 +16,7 @@ def parse_line(line: str) -> tuple[tuple[str, str], Error|None]:
   elif curr_expected_indicator == "S": return (("", ""), "MISSING_CORRECT_ANSWER")
   else: return (("", ""), "INVALID_LINE_INDICATOR")
 
-def load_questions(path: str) -> tuple[list, Error|None]:
+def load_questions(path: str) -> tuple[list, str|None]:
   with open(path) as f:
     lines = f.readlines()
   

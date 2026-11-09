@@ -12,10 +12,12 @@ def question_create(lines: list[str]):
   def get_question(): nonlocal question; return question
   def get_answers(): nonlocal answers; return answers
   def get_correct_answer(): nonlocal correct_answer; return correct_answer
+  def set_answers(new_answers): nonlocal answers; answers = new_answers
   
   return {
     "print_question": print_question,
     "get_question": get_question,
     "get_answers": get_answers,
+    "set_answers": set_answers,
     "get_correct_answer": get_correct_answer
   }

@@ -31,4 +31,13 @@ def load_questions(path: str) -> tuple[list, str|None]:
       questions.append(question_create(question_lines))
       question_lines = []
   return (questions, None)
-      
+
+def load_scores(path: str) -> list[tuple[str, int]]:
+  with open(path, "r") as f:
+    records = [line.strip().split("\t") for line in f.readlines()]
+    records = [(name, int(value)) for name, value in records]
+  return records
+
+def write_scores(path: str, records: list[tuple[str, int]]):
+  with open(path, "w") as f:
+    for name, score in records: f.write(name + "\t" + str(score) + "\n")

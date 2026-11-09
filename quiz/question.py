@@ -4,20 +4,24 @@ def question_create(lines: list[str]):
   correct_answer = lines[5][1]
   
   def print_question():
-    nonlocal question, answers, correct_answer
     print(question)
     for letter, ans in answers.items():
       print(f"{letter}: {ans}")
       
-  def get_question(): nonlocal question; return question
-  def get_answers(): nonlocal answers; return answers
-  def get_correct_answer(): nonlocal correct_answer; return correct_answer
-  def set_answers(new_answers): nonlocal answers; answers = new_answers
+  def use_lifeline():
+    nonlocal answers
+    new_answers = {"A": answers["A"]} if "A" != correct_answer else {"B": answers["B"]}
+    new_answers[correct_answer] = answers[correct_answer]
+    answers = new_answers
+      
+  def get_question(): return question
+  def get_answers(): return answers
+  def get_correct_answer(): return correct_answer
   
   return {
     "print_question": print_question,
+    "use_lifeline": use_lifeline,
     "get_question": get_question,
     "get_answers": get_answers,
-    "set_answers": set_answers,
     "get_correct_answer": get_correct_answer
   }

@@ -1,4 +1,5 @@
 from question import question_create
+from pathlib import Path
 
 indicators = ["Q", "A", "B", "C", "D", "S"]
 expected_indicator_idx = 0
@@ -16,7 +17,7 @@ def parse_line(line: str) -> tuple[tuple[str, str], str|None]:
   elif curr_expected_indicator == "S": return (("", ""), "MISSING_CORRECT_ANSWER")
   else: return (("", ""), "INVALID_LINE_INDICATOR")
 
-def load_questions(path: str) -> tuple[list, str|None]:
+def load_questions(path: Path) -> tuple[list, str|None]:
   with open(path) as f:
     lines = f.readlines()
   
@@ -30,14 +31,15 @@ def load_questions(path: str) -> tuple[list, str|None]:
     if len(question_lines) == 6:
       questions.append(question_create(question_lines))
       question_lines = []
+  if len(question_lines) != 0: return ([], "MISSING_LINES")
   return (questions, None)
 
-def load_scores(path: str) -> list[tuple[str, int]]:
+def load_scores(path: Path) -> list[tuple[str, int]]:
   with open(path, "r") as f:
     records = [line.strip().split("\t") for line in f.readlines()]
     records = [(name, int(value)) for name, value in records]
   return records
 
-def write_scores(path: str, records: list[tuple[str, int]]):
+def write_scores(path: Path, records: list[tuple[str, int]]):
   with open(path, "w") as f:
     for name, score in records: f.write(name + "\t" + str(score) + "\n")

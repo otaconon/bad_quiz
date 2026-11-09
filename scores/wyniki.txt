@@ -1,3 +1,5 @@
 maks	1
 maks	1
+pi	1
 erwin	0
+xd	0
